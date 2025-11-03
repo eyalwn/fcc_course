@@ -1,0 +1,87 @@
+/* Base layout */
+html, body {
+	height: 100%;
+}
+
+body {
+	/* FCC-like colors and typography */
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+	background: #f5f6f7;
+	color: #1b1b32;
+	margin: 0;
+
+	/* Centered, narrow content column */
+	max-width: 720px;
+	padding: 48px 24px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 1.6;
+}
+
+/* Headings */
+h1 {
+	font-size: 32px;
+	line-height: 1.2;
+	text-align: center;
+	margin: 0 0 24px 0;
+	font-weight: 700;
+	color: #1b1b32;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 1.3;
+	margin: 24px 0 8px 0;
+	font-weight: 600;
+	color: #1b1b32;
+}
+
+/* Divider */
+hr {
+	border: 0;
+	border-top: 1px solid #d0d0d5;
+	margin: 16px 0 24px 0;
+}
+
+/* Text */
+p {
+	margin: 8px 0;
+}
+
+/* Links */
+a {
+	color: #2a6bf2;
+	text-decoration: none;
+	word-break: break-all; /* allow long URLs to wrap */
+}
+
+a:hover,
+a:focus {
+	text-decoration: underline;
+}
+
+/* Example output styling (monospace card look) */
+p:last-of-type {
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+	background: #0a0a23;
+	color: #ffffff;
+	padding: 12px 14px;
+	border-radius: 6px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+}
+
+/* Small screens */
+@media (max-width: 420px) {
+	body {
+		padding: 32px 16px;
+	}
+
+	h1 {
+		font-size: 26px;
+	}
+
+	h2 {
+		font-size: 18px;
+	}
+}
