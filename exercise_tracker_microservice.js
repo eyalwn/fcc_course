@@ -1,12 +1,7 @@
-/* demonstration for a micro-service that uses SQL DB (PostgreSQL).
- * reviewed by Cursor agent.
- * exercise details:
- * https://www.freecodecamp.org/learn/back-end-development-and-apis/back-end-development-and-apis-projects/exercise-tracker
- */
-const express = require('express')
-const app = express()
-const cors = require('cors')
-require('dotenv').config()
+const express = require('express');
+const app = express();
+const cors = require('cors');
+require('dotenv').config();
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -25,14 +20,10 @@ async function startPostgreConnection() {
 	client = new Client(credentials);
 	await client.connect();
 }
-await startPostgreConnection().catch(err => {
-	console.error('[DB] Connection failed:', err);
-	process.exit(1);
-});
 
 ////////////////// routing
-app.use(cors())
-app.use(express.static('public'))
+app.use(cors());
+app.use(express.static('public'));
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/views/index.html')
 });
@@ -183,6 +174,16 @@ app.get('/api/users/:_id/logs', async (req, res) => {
 
 
 /////////////// start listen to socket
-const listener = app.listen(process.env.PORT || 3000, () => {
-  console.log('Server listening on http://localhost:' + listener.address().port)
-})
+async function startServer() {
+	try {
+		await startPostgreConnection();
+		const listener = app.listen(process.env.PORT || 3000, () => {
+			console.log('Server listening on http://localhost:' + listener.address().port)
+		});
+	} catch (err) {
+		console.error('[DB] Connection failed:', err);
+		process.exit(1);
+	}
+}
+
+startServer();
